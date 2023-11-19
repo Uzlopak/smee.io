@@ -25,6 +25,7 @@ const cfg = {
   plugins: [
     // new webpack.optimize.UglifyJsPlugin(),
     new MiniCssExtractPlugin({ filename: '[name].min.css' })
+
   ],
   module: {
     rules: [{
@@ -42,7 +43,9 @@ const cfg = {
           loader: 'postcss-loader',
           options: {
             sourceMap: true,
-            plugins: () => [autoprefixer(browsers)]
+            postcssOptions: {
+              plugins: [autoprefixer(browsers)]
+            }
           }
         }, {
           loader: 'sass-loader',
